@@ -50,14 +50,19 @@ namespace ServiceLocator.UI
         {
             rectTransform.position = originalPosition;
             rectTransform.anchoredPosition = originalAnchoredPosition;
-            GetComponent<LayoutElement>().enabled = false;
-            GetComponent<LayoutElement>().enabled = true;
+            ResetLayout();
             monkeyImage.color = new Color(1, 1, 1, 1);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             monkeyImage.color = new Color(1, 1, 1, 0.5f);
+        }
+
+        private void ResetLayout()
+        {
+            GetComponent<LayoutElement>().enabled = false;
+            GetComponent<LayoutElement>().enabled = true;
         }
     }
 }

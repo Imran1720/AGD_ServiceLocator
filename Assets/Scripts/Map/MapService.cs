@@ -1,8 +1,8 @@
+using ServiceLocator.Events;
+using ServiceLocator.Player;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using ServiceLocator.Player;
-using ServiceLocator.Events;
 
 namespace ServiceLocator.Map
 {
@@ -11,10 +11,25 @@ namespace ServiceLocator.Map
         [SerializeField] private EventService eventService;
         [SerializeField] private MapScriptableObject mapScriptableObject;
 
+        public static MapService Instance { get { return instance; } }
+        private static MapService instance;
+
         private Grid currentGrid;
         private Tilemap currentTileMap;
         private MapData currentMapData;
         private SpriteRenderer tileOverlay;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
         private void Start()
         {
