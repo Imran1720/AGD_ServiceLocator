@@ -789,6 +789,10 @@ PrefabInstance:
       propertyPath: eventService
       value: 
       objectReference: {fileID: 338547895}
+    - target: {fileID: 7182248005041137928, guid: 15430d56842a28843b57fd250730f142, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: waveService
       value: 
