@@ -17,6 +17,8 @@ public class GameService : GenericMonoSingleton<GameService>
     public MapService mapService { get; private set; }
     public EventService eventService { get; private set; }
 
+    [SerializeField] private CustomBloonSpawner bloonSpawner;
+    public CustomBloonSpawner BloonSpawner => bloonSpawner;
     [SerializeField] private UIService uIService;
     public UIService UIService => uIService;
 
@@ -33,6 +35,7 @@ public class GameService : GenericMonoSingleton<GameService>
     private void Start()
     {
         eventService = new EventService();
+        UIService.SubscribeToEvents();
         playerService = new PlayerService(playerScriptableObject);
         soundService = new SoundService(soundScriptableObject, audioEffects, backgroundMusic);
         waveService = new WaveService(waveScriptableObject);
