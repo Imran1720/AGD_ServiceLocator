@@ -1,7 +1,10 @@
+using ServiceLocator.Main;
+using ServiceLocator.Map;
+using ServiceLocator.Player.Projectile;
+using ServiceLocator.UI;
+using ServiceLocator.Wave;
 using System.Collections.Generic;
 using UnityEngine;
-using ServiceLocator.Player.Projectile;
-using ServiceLocator.Main;
 
 namespace ServiceLocator.Player
 {
@@ -10,17 +13,28 @@ namespace ServiceLocator.Player
         private PlayerScriptableObject playerScriptableObject;
         private ProjectilePool projectilePool;
 
+        private UIService uIService;
+        private MapService mapService;
+        private WaveService waveService;
+
         private List<MonkeyController> activeMonkeys;
         private MonkeyView selectedMonkeyView;
         private int health;
         public int Money { get; private set; }
 
 
+        public void init(UIService uIService, MapService mapService, WaveService waveService)
+        {
+            this.uIService = uIService;
+            this.mapService = mapService;
+            this.waveService = waveService;
+            InitializeVariables();
+        }
+
         public PlayerService(PlayerScriptableObject playerScriptableObject)
         {
             this.playerScriptableObject = playerScriptableObject;
             projectilePool = new ProjectilePool(playerScriptableObject.ProjectilePrefab, playerScriptableObject.ProjectileScriptableObjects);
-            InitializeVariables();
         }
 
         private void InitializeVariables()
@@ -34,12 +48,12 @@ namespace ServiceLocator.Player
 
         public void Update()
         {
-            foreach(MonkeyController monkey in activeMonkeys)
+            foreach (MonkeyController monkey in activeMonkeys)
             {
                 monkey?.UpdateMonkey();
             }
 
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 TrySelectingMonkey();
             }
@@ -51,7 +65,7 @@ namespace ServiceLocator.Player
 
             foreach (RaycastHit2D hit in hits)
             {
-                if(IsMonkeyCollider(hit.collider))
+                if (IsMonkeyCollider(hit.collider))
                 {
                     SetSelectedMonkeyView(hit.collider.GetComponent<MonkeyView>());
                     return;
@@ -110,14 +124,14 @@ namespace ServiceLocator.Player
         private MonkeyScriptableObject GetMonkeyScriptableObjectByType(MonkeyType monkeyType) => playerScriptableObject.MonkeyScriptableObjects.Find(so => so.Type == monkeyType);
 
         public void ReturnProjectileToPool(ProjectileController projectileToReturn) => projectilePool.ReturnItem(projectileToReturn);
-        
+
         public void TakeDamage(int damageToTake)
         {
             int reducedHealth = health - damageToTake;
             health = reducedHealth <= 0 ? 0 : health - damageToTake;
 
             GameService.Instance.UIService.UpdateHealthUI(health);
-            if(health <= 0)
+            if (health <= 0)
                 PlayerDeath();
         }
 

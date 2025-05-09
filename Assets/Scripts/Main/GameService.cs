@@ -1,11 +1,12 @@
-using UnityEngine;
-using ServiceLocator.Utilities;
 using ServiceLocator.Events;
 using ServiceLocator.Map;
-using ServiceLocator.Wave;
-using ServiceLocator.Sound;
 using ServiceLocator.Player;
+using ServiceLocator.Sound;
 using ServiceLocator.UI;
+using ServiceLocator.Utilities;
+using ServiceLocator.Wave;
+using System;
+using UnityEngine;
 
 namespace ServiceLocator.Main
 {
@@ -33,6 +34,17 @@ namespace ServiceLocator.Main
         [SerializeField] private AudioSource BGSource;
 
         private void Start()
+        {
+            CreateService();
+            InitializeService();
+        }
+
+        private void InitializeService()
+        {
+            PlayerService.init(UIService, MapService, WaveService);
+        }
+
+        private void CreateService()
         {
             EventService = new EventService();
             UIService.SubscribeToEvents();
