@@ -1,5 +1,6 @@
 using ServiceLocator.Events;
 using ServiceLocator.Main;
+using ServiceLocator.Player;
 using ServiceLocator.Wave;
 using System.Collections.Generic;
 using TMPro;
@@ -39,12 +40,9 @@ namespace ServiceLocator.UI
         private EventService eventService;
         private WaveService waveService;
 
-
         private void Start()
         {
-            monkeySelectionController = new MonkeySelectionUIController(cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects);
-            MonkeySelectionPanel.SetActive(false);
-            monkeySelectionController.SetActive(false);
+
 
             gameplayPanel.SetActive(false);
             levelSelectionPanel.SetActive(true);
@@ -55,10 +53,13 @@ namespace ServiceLocator.UI
             playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         }
 
-        public void Init(EventService eventService, WaveService waveService)
+        public void Init(EventService eventService, WaveService waveService, PlayerService playerService)
         {
             this.eventService = eventService;
             this.waveService = waveService;
+            monkeySelectionController = new MonkeySelectionUIController(cellContainer, monkeyCellPrefab, monkeyCellScriptableObjects, playerService);
+            MonkeySelectionPanel.SetActive(false);
+            monkeySelectionController.SetActive(false);
             SubscribeToEvents();
         }
 
