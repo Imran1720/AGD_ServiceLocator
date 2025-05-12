@@ -60,7 +60,7 @@ namespace ServiceLocator.Main
 
         private void Update()
         {
-            PlayerService.Update();
+            playerService.Update();
         }
     }
 }

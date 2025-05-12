@@ -11,6 +11,10 @@ namespace ServiceLocator.Player
 {
     public class PlayerService
     {
+        // Dependencies:
+        private MapService mapService;
+        private UIService uiService;
+        private SoundService soundService;
         private PlayerScriptableObject playerScriptableObject;
         private ProjectilePool projectilePool;
 
@@ -120,6 +124,8 @@ namespace ServiceLocator.Player
 
             monkey.SetPosition(spawnPosition);
             activeMonkeys.Add(monkey);
+            DeductMoney(monkeyScriptableObject.Cost);
+        }
 
             DeductMoney(monkeyScriptableObject.Cost);
         }

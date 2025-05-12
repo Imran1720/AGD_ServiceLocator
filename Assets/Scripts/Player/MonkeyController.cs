@@ -9,7 +9,8 @@ namespace ServiceLocator.Player
 {
     public class MonkeyController
     {
-        private MonkeyView monkeyView;
+        // Dependencies:
+        private SoundService soundService;
         private MonkeyScriptableObject monkeyScriptableObject;
         private ProjectilePool projectilePool;
 

@@ -8,6 +8,11 @@ namespace ServiceLocator.Wave.Bloon
 {
     public class BloonController
     {
+        // Dependencies:
+        private PlayerService playerService;
+        private WaveService waveService;
+        private SoundService soundService;
+
         private BloonView bloonView;
         private BloonScriptableObject bloonScriptableObject;
 
@@ -64,6 +69,8 @@ namespace ServiceLocator.Wave.Bloon
             waypoints = waypointsToSet;
             currentWaypointIndex = startingWaypointIndex;
         }
+
+        public void SetOrderInLayer(int orderInLayer) => bloonView.SetSortingOrder(orderInLayer);
 
         public void TakeDamage(int damageToTake)
         {

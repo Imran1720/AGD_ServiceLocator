@@ -8,6 +8,7 @@ namespace ServiceLocator.UI
     public class MapButton : MonoBehaviour
     {
         [SerializeField] private int MapId;
+        private EventService eventService;
 
         private EventService eventService;
         public void Init(EventService eventService)

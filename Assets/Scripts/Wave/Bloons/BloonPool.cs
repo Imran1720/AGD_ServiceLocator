@@ -14,6 +14,10 @@ namespace ServiceLocator.Wave.Bloon
 {
     public class BloonPool : GenericObjectPool<BloonController>
     {
+        private PlayerService playerService;
+        private WaveService waveService;
+        private SoundService soundService;
+
         private BloonView bloonPrefab;
         private List<BloonScriptableObject> bloonScriptableObjects;
         private Transform bloonContainer;

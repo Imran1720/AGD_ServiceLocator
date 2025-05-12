@@ -9,6 +9,8 @@ namespace ServiceLocator.Map
 {
     public class MapService
     {
+        // Dependencies:
+        private EventService eventService;
         private MapScriptableObject mapScriptableObject;
 
         private EventService eventService;
@@ -90,7 +92,7 @@ namespace ServiceLocator.Map
 
             if (CanSpawnOnPosition(centerCell, cellPosition))
             {
-                spawnPosition = centerCell;
+                spawnPosition = cellCenter;
                 return true;
             }
             else
@@ -131,9 +133,7 @@ namespace ServiceLocator.Map
             foreach (Collider2D collider in colliders)
             {
                 if (collider.gameObject.GetComponent<MonkeyView>() != null && !collider.isTrigger)
-                {
                     return true;
-                }
             }
             return false;
         }

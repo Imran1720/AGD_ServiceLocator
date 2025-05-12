@@ -12,6 +12,7 @@ namespace ServiceLocator.Player.Projectile
 {
     public class ProjectilePool : GenericObjectPool<ProjectileController>
     {
+        private PlayerService playerService;
         private ProjectileView projectilePrefab;
         private List<ProjectileScriptableObject> projectileScriptableObjects;
         private PlayerService playerService;

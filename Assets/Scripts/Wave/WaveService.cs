@@ -13,6 +13,13 @@ namespace ServiceLocator.Wave
 {
     public class WaveService
     {
+        // Dependencies:
+        private UIService uiService;
+        private MapService mapService;
+        private PlayerService playerService;
+        private SoundService soundService;
+        private EventService eventService;
+
         private WaveScriptableObject waveScriptableObject;
         private BloonPool bloonPool;
 

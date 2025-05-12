@@ -6,6 +6,7 @@ namespace ServiceLocator.Player.Projectile
 {
     public class ProjectileController
     {
+        private PlayerService playerService;
         private ProjectileView projectileView;
         private ProjectileScriptableObject projectileScriptableObject;
 

@@ -12,6 +12,10 @@ namespace ServiceLocator.UI
 {
     public class UIService : MonoBehaviour
     {
+        // Dependencies:
+        private WaveService waveService;
+        private EventService eventService;
+
         [Header("Gameplay Panel")]
         [SerializeField] private GameObject gameplayPanel;
         [SerializeField] private TextMeshProUGUI healthText;
@@ -46,7 +50,6 @@ namespace ServiceLocator.UI
 
 
             gameplayPanel.SetActive(false);
-            levelSelectionPanel.SetActive(true);
             gameEndPanel.SetActive(false);
 
             nextWaveButton.onClick.AddListener(OnNextWaveButton);
