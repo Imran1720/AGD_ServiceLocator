@@ -10,7 +10,6 @@ namespace ServiceLocator.Player.Projectile
         private ProjectileView projectileView;
         private ProjectileScriptableObject projectileScriptableObject;
 
-        private PlayerService playerService;
 
         private BloonController target;
         private ProjectileState currentState;

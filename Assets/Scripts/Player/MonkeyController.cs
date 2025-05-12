@@ -10,11 +10,11 @@ namespace ServiceLocator.Player
     public class MonkeyController
     {
         // Dependencies:
+        private MonkeyView monkeyView;
         private SoundService soundService;
         private MonkeyScriptableObject monkeyScriptableObject;
         private ProjectilePool projectilePool;
 
-        private SoundService soundService;
 
         private List<BloonController> bloonsInRange;
         private float attackTimer;

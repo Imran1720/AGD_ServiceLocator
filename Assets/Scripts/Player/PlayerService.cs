@@ -19,9 +19,7 @@ namespace ServiceLocator.Player
         private ProjectilePool projectilePool;
 
         private UIService uIService;
-        private MapService mapService;
         private WaveService waveService;
-        private SoundService soundService;
 
         private List<MonkeyController> activeMonkeys;
         private MonkeyView selectedMonkeyView;
@@ -127,8 +125,8 @@ namespace ServiceLocator.Player
             DeductMoney(monkeyScriptableObject.Cost);
         }
 
-            DeductMoney(monkeyScriptableObject.Cost);
-        }
+        //DeductMoney(monkeyScriptableObject.Cost);
+        //}
 
         private MonkeyScriptableObject GetMonkeyScriptableObjectByType(MonkeyType monkeyType) => playerScriptableObject.MonkeyScriptableObjects.Find(so => so.Type == monkeyType);
 

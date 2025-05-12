@@ -22,10 +22,6 @@ namespace ServiceLocator.Wave.Bloon
         private List<BloonScriptableObject> bloonScriptableObjects;
         private Transform bloonContainer;
 
-        private PlayerService playerService;
-        private WaveService waveService;
-        private SoundService soundService;
-
         public BloonPool(WaveScriptableObject waveScriptableObject, PlayerService playerService, WaveService waveService, SoundService soundService)
         {
             this.waveService = waveService;

@@ -42,14 +42,10 @@ namespace ServiceLocator.UI
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
 
-        private EventService eventService;
-        private WaveService waveService;
-
         private void Start()
         {
-
-
             gameplayPanel.SetActive(false);
+            levelSelectionPanel.SetActive(true);
             gameEndPanel.SetActive(false);
 
             nextWaveButton.onClick.AddListener(OnNextWaveButton);

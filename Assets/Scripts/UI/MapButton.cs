@@ -10,7 +10,6 @@ namespace ServiceLocator.UI
         [SerializeField] private int MapId;
         private EventService eventService;
 
-        private EventService eventService;
         public void Init(EventService eventService)
         {
             this.eventService = eventService;

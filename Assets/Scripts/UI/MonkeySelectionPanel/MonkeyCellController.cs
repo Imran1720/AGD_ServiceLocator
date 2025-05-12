@@ -12,7 +12,6 @@ namespace ServiceLocator.UI
         private MonkeyCellView monkeyCellView;
         private MonkeyCellScriptableObject monkeyCellSO;
 
-        private PlayerService playerService;
 
         public MonkeyCellController(Transform cellContainer, MonkeyCellView monkeyCellPrefab, MonkeyCellScriptableObject monkeyCellScriptableObject, PlayerService playerService)
         {
@@ -23,11 +22,6 @@ namespace ServiceLocator.UI
             monkeyCellView.SetController(this);
             monkeyCellView.ConfigureCellUI(monkeyCellSO.Sprite, monkeyCellSO.Name, monkeyCellSO.Cost);
             this.playerService = playerService;
-        }
-
-        public void MonkeyDraggedAt(Vector3 dragPosition)
-        {
-            playerService.ValidateSpawnPosition(monkeyCellSO.Cost, dragPosition);
         }
 
         public void MonkeyDraggedAt(Vector3 dragPosition)

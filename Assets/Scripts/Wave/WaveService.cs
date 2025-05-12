@@ -24,10 +24,6 @@ namespace ServiceLocator.Wave
         private BloonPool bloonPool;
 
         private UIService uIService;
-        private SoundService soundService;
-        private MapService mapService;
-        private EventService eventService;
-        private PlayerService playerService;
         private WaveSpawner waveSpawner;
 
         private int currentWaveId;

@@ -16,10 +16,6 @@ namespace ServiceLocator.Wave.Bloon
         private BloonView bloonView;
         private BloonScriptableObject bloonScriptableObject;
 
-        private PlayerService playerService;
-        private WaveService waveService;
-        private SoundService soundService;
-
         private const float waypointThreshold = 0.1f;
         private List<Vector3> waypoints;
         private int currentHealth;
@@ -114,7 +110,6 @@ namespace ServiceLocator.Wave.Bloon
 
         private void MoveBloon(Vector3 moveDirection) => bloonView.transform.Translate(moveDirection.normalized * bloonScriptableObject.Speed * Time.deltaTime);
 
-        public void SetOrderInLayer(int orderInLayer) => bloonView.SetSortingOrder(orderInLayer);
 
         private void PopBloon()
         {

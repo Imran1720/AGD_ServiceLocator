@@ -13,7 +13,6 @@ namespace ServiceLocator.Map
         private EventService eventService;
         private MapScriptableObject mapScriptableObject;
 
-        private EventService eventService;
 
         private Grid currentGrid;
         private Tilemap currentTileMap;
@@ -92,7 +91,7 @@ namespace ServiceLocator.Map
 
             if (CanSpawnOnPosition(centerCell, cellPosition))
             {
-                spawnPosition = cellCenter;
+                spawnPosition = centerCell;
                 return true;
             }
             else
