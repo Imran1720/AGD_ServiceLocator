@@ -10,20 +10,20 @@ using UnityEngine;
 
 namespace ServiceLocator.Main
 {
-    public class GameService : GenericMonoSingleton<GameService>
+    public class GameService : MonoBehaviour
     {
         // Services:
-        public EventService EventService { get; private set; }
-        public MapService MapService { get; private set; }
-        public WaveService WaveService { get; private set; }
-        public SoundService SoundService { get; private set; }
-        public PlayerService PlayerService { get; private set; }
+        private EventService EventService;
+        private MapService MapService;
+        private WaveService WaveService;
+        private SoundService SoundService;
+        private PlayerService PlayerService;
+
+        [SerializeField] private WaveSpawner waveSpawner;
+        public WaveSpawner WaveSpawner => waveSpawner;
 
         [SerializeField] private UIService uiService;
         public UIService UIService => uiService;
-
-        [SerializeField] private MapButton mapButton;
-        public MapButton MapButton => mapButton;
 
         // Scriptable Objects:
         [SerializeField] private MapScriptableObject mapScriptableObject;
@@ -44,10 +44,9 @@ namespace ServiceLocator.Main
         private void InjectDependencies()
         {
             PlayerService.Init(UIService, MapService, WaveService, SoundService);
-            WaveService.Init(EventService, MapService, SoundService, UIService, PlayerService);
+            WaveService.Init(EventService, MapService, SoundService, UIService, PlayerService, waveSpawner);
             MapService.Init(EventService);
             UIService.Init(EventService, WaveService, PlayerService);
-            MapButton.Init(EventService);
         }
 
         private void CreateService()

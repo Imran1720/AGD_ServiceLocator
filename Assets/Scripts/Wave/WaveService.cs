@@ -21,6 +21,7 @@ namespace ServiceLocator.Wave
         private MapService mapService;
         private EventService eventService;
         private PlayerService playerService;
+        private WaveSpawner waveSpawner;
 
         private int currentWaveId;
         private List<WaveData> waveDatas;
@@ -32,13 +33,14 @@ namespace ServiceLocator.Wave
 
         }
 
-        public void Init(EventService eventService, MapService mapService, SoundService soundService, UIService uIService, PlayerService playerService)
+        public void Init(EventService eventService, MapService mapService, SoundService soundService, UIService uIService, PlayerService playerService, WaveSpawner waveSpawner)
         {
             this.eventService = eventService;
             this.mapService = mapService;
             this.soundService = soundService;
             this.uIService = uIService;
             this.playerService = playerService;
+            this.waveSpawner = waveSpawner;
             InitializeBloons();
             SubscribeToEvents();
         }
@@ -63,7 +65,9 @@ namespace ServiceLocator.Wave
             currentWaveId++;
             var bloonsToSpawn = GetBloonsForCurrentWave();
             var spawnPosition = mapService.GetBloonSpawnPositionForCurrentMap();
-            SpawnBloons(bloonsToSpawn, spawnPosition, 0, waveScriptableObject.SpawnRate);
+            waveSpawner.Init(bloonsToSpawn, spawnPosition, 0, waveScriptableObject.SpawnRate, bloonPool, mapService, this);
+            waveSpawner.SpawnWave();
+            //SpawnBloons(bloonsToSpawn, spawnPosition, 0, waveScriptableObject.SpawnRate);
         }
 
         public async void SpawnBloons(List<BloonType> bloonsToSpawn, Vector3 spawnPosition, int startingWaypointIndex, float spawnRate)
@@ -79,7 +83,7 @@ namespace ServiceLocator.Wave
             }
         }
 
-        private void AddBloon(BloonController bloonToAdd)
+        public void AddBloon(BloonController bloonToAdd)
         {
             activeBloons.Add(bloonToAdd);
             bloonToAdd.SetOrderInLayer(-activeBloons.Count);
