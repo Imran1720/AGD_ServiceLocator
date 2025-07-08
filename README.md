@@ -10,6 +10,11 @@ Through hands-on implementation, I learned:
 
 The focus was purely on grasping design principles, not building the project from scratch.
 
+## Gameplay
+
+Click on following image to view gameplay.
+[![Image](https://github.com/user-attachments/assets/e26e788c-74aa-4f9c-a979-c31821009c61)](https://drive.google.com/file/d/1hk3TE9sgCQrXFN1k_ovTmuDsMOul1Fhw/view?usp=sharing)
+
 ## Singleton
 Singleton is a design pattern that ensures a class has only one instance and provides a global access point to it.
 
